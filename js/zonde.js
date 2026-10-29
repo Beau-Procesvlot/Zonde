@@ -2,16 +2,16 @@
 
 const APPS = {
   fitchecker: {
-    naam: 'Fitchecker', motto: 'Draag wat je hebt', thema: 'Kleding',
+    naam: 'Fitchecker', motto: 'Wear what you have', thema: 'Clothes',
     url: 'https://beau-procesvlot.github.io/Fitchecker/', pagina: 'fitchecker.html',
     icoon: 'img/fitchecker.png', qr: 'img/qr-fitchecker.svg',
   },
   datechecker: {
-    naam: 'Datechecker', motto: 'Eet wat je hebt', thema: 'Eten',
+    naam: 'Datechecker', motto: 'Eat what you have', thema: 'Food',
     url: 'https://beau-procesvlot.github.io/Datechecker/', pagina: 'datechecker.html',
     icoon: 'img/datechecker.png', qr: 'img/qr-datechecker.svg',
   },
-  binnenkort: { naam: 'Binnenkort', motto: 'Er komt meer', binnenkort: true },
+  binnenkort: { naam: 'Coming soon', motto: 'More to come', binnenkort: true },
 };
 const VOLGORDE = ['fitchecker', 'datechecker', 'binnenkort'];
 const TELLER_URL = 'https://datechecker-teller.beau-f5b.workers.dev';
@@ -41,8 +41,8 @@ function toast(tekst) {
 }
 
 async function kopieer(tekst) {
-  try { await navigator.clipboard.writeText(tekst); toast('Link gekopieerd'); }
-  catch { prompt('Kopieer deze link:', tekst); }
+  try { await navigator.clipboard.writeText(tekst); toast('Link copied'); }
+  catch { prompt('Copy this link:', tekst); }
 }
 
 // ---------- Slideshow (loopt vanzelf door de apps) ----------
@@ -140,7 +140,7 @@ function toon(i) {
   eersteKeer = false;
   $('#count').textContent = nr;
   $('.now b').textContent = nr;
-  $('#now-text').textContent = app.binnenkort ? 'Er komt meer' : `${app.thema} · ${app.motto}`;
+  $('#now-text').textContent = app.binnenkort ? 'More to come' : `${app.thema} · ${app.motto}`;
   // Het lijntje loopt vol tot de volgende app komt.
   const balk = $('#progress-bar');
   balk.style.transition = 'none';
@@ -209,33 +209,33 @@ function uitleg(app, apparaat) {
   if (apparaat === 'iphone') {
     let waarschuwing = '';
     if (inApp) {
-      waarschuwing = `<div class="warn"><b>Je zit nu in een app zoals Instagram of TikTok.</b>Daar kun je niks op je beginscherm zetten. Kopieer de link en plak hem in Safari.<br><button class="btn btn-ink" data-kopieer="${app.url}">Kopieer de link</button></div>`;
+      waarschuwing = `<div class="warn"><b>You’re inside an app like Instagram or TikTok.</b>You can’t add anything to your home screen from here. Copy the link and paste it in Safari.<br><button class="btn btn-ink" data-kopieer="${app.url}">Copy the link</button></div>`;
     } else if (iosAndereBrowser) {
-      waarschuwing = `<div class="warn"><b>Tip: gebruik Safari.</b>Het kan ook in deze browser, maar in Safari gaat het het makkelijkst.<br><button class="btn btn-ink" data-kopieer="${app.url}">Kopieer de link</button></div>`;
+      waarschuwing = `<div class="warn"><b>Tip: use Safari.</b>It works in this browser too, but Safari makes it easiest.<br><button class="btn btn-ink" data-kopieer="${app.url}">Copy the link</button></div>`;
     }
     return `${waarschuwing}<ol>
       <li><p>Open ${app.naam} in <span class="ui">Safari</span>.<br><a class="btn btn-ink" href="${app.url}">Open ${app.naam}</a></p></li>
-      <li><p>Tik op de deelknop ${ico('deel')}. Zie je die niet? Tik dan eerst op ${ico('meer')}.</p></li>
-      <li><p>Scroll een stukje en kies <span class="ui">Zet op beginscherm</span> ${ico('plus')}.</p></li>
-      <li><p>Tik op <span class="ui">Voeg toe</span>. Klaar: ${app.naam} staat nu tussen je andere apps.</p></li>
+      <li><p>Tap the Share button ${ico('deel')}. Can’t see it? Tap ${ico('meer')} first.</p></li>
+      <li><p>Scroll down a bit and choose <span class="ui">Add to Home Screen</span> ${ico('plus')}.</p></li>
+      <li><p>Tap <span class="ui">Add</span>. Done: ${app.naam} is now with your other apps.</p></li>
     </ol>
-    <p class="tip"><b>Belangrijk:</b> open de app voortaan via het icoon op je beginscherm. Dan blijft alles wat je erin zet bewaard.</p>`;
+    <p class="tip"><b>Important:</b> from now on, open the app from the icon on your home screen. That way everything you add stays saved.</p>`;
   }
   if (apparaat === 'android') {
     return `<ol>
       <li><p>Open ${app.naam} in <span class="ui">Chrome</span>.<br><a class="btn btn-ink" href="${app.url}">Open ${app.naam}</a></p></li>
-      <li><p>Tik rechtsboven op ${ico('menu')}.</p></li>
-      <li><p>Kies <span class="ui">App installeren</span> of <span class="ui">Toevoegen aan startscherm</span>.</p></li>
-      <li><p>Tik op <span class="ui">Installeren</span>. Klaar: ${app.naam} staat nu tussen je andere apps.</p></li>
+      <li><p>Tap ${ico('menu')} in the top right.</p></li>
+      <li><p>Choose <span class="ui">Install app</span> or <span class="ui">Add to Home screen</span>.</p></li>
+      <li><p>Tap <span class="ui">Install</span>. Done: ${app.naam} is now with your other apps.</p></li>
     </ol>
-    <p class="tip"><b>Belangrijk:</b> open de app voortaan via het icoon. Dan blijft alles wat je erin zet bewaard.</p>`;
+    <p class="tip"><b>Important:</b> from now on, open the app from its icon. That way everything you add stays saved.</p>`;
   }
   return `<div class="qr">
-      <img src="${app.qr}" alt="QR-code naar ${app.naam}" width="190" height="190">
-      <p>${app.naam} is gemaakt voor je telefoon.<br><b>Scan deze code met de camera van je telefoon</b> en volg daar de stappen.</p>
+      <img src="${app.qr}" alt="QR code for ${app.naam}" width="190" height="190">
+      <p>${app.naam} is made for your phone.<br><b>Scan this code with your phone’s camera</b> and follow the steps there.</p>
     </div>
-    <a class="link-plain" href="${app.url}">Of open hem toch op je laptop →</a>
-    <p class="tip">In Chrome of Edge kun je hem ook op je laptop installeren: klik op het installeer-icoontje rechts in de adresbalk.</p>`;
+    <a class="link-plain" href="${app.url}">Or open it on your laptop anyway →</a>
+    <p class="tip">In Chrome or Edge you can install it on your laptop too: click the install icon on the right of the address bar.</p>`;
 }
 
 // Het keuzeblok Laptop / iPhone / Android, ingevuld voor één app.
@@ -258,10 +258,10 @@ function downloadBlok(el, id) {
 function openBinnenkort() {
   const sheet = $('#app-sheet');
   $('#sheet-body').innerHTML = `<div class="grip"></div>
-    <div class="sheet-head"><div><h2 id="sheet-title">Er komt meer.</h2><p>De volgende Zonde-app</p></div><button class="close" aria-label="Sluiten">×</button></div>
-    <p class="sheet-desc">Kleding en eten zijn pas het begin. Er is nog veel meer dat zonde is om weg te gooien, en daar werken we aan.</p>
-    <p class="sheet-desc">Doe alvast mee met een van de apps die er al zijn, dan ben je er als eerste bij.</p>
-    <p><a class="btn btn-ink" href="fitchecker.html">Bekijk Fitchecker</a></p>`;
+    <div class="sheet-head"><div><h2 id="sheet-title">More to come.</h2><p>The next Zonde. app</p></div><button class="close" aria-label="Close">×</button></div>
+    <p class="sheet-desc">Clothes and food are just the start. There’s so much more that’s too good to throw away, and we’re working on it.</p>
+    <p class="sheet-desc">Join in with one of the apps that are already here, and you’ll be the first to know.</p>
+    <p><a class="btn btn-ink" href="fitchecker.html">See Fitchecker</a></p>`;
   sheet.showModal();
 }
 
@@ -281,7 +281,7 @@ function haalTotaal() {
 }
 const kgTekst = gram => {
   const kg = gram / 1000;
-  return kg.toLocaleString('nl-NL', { maximumFractionDigits: kg < 100 ? 1 : 0 });
+  return kg.toLocaleString('en-GB', { maximumFractionDigits: kg < 100 ? 1 : 0 });
 };
 
 async function initTeller() {
@@ -291,10 +291,10 @@ async function initTeller() {
     const { gram } = await haalTotaal();
     vakken.forEach(el => { el.textContent = kgTekst(gram); });
     $$('[data-teller-badge]').forEach(el => el.classList.add('on'));
-    if (gram < 10000) $$('[data-teller-note]').forEach(el => { el.textContent = 'We zijn net begonnen. Jij kunt het verschil maken: telt live mee, helemaal anoniem.'; });
+    if (gram < 10000) $$('[data-teller-note]').forEach(el => { el.textContent = 'We’ve only just started. You can make the difference: counts live, completely anonymous.'; });
   } catch {
     vakken.forEach(el => { el.textContent = '–'; });
-    $$('[data-teller-note]').forEach(el => { el.textContent = 'De teller is nu even niet bereikbaar. Probeer het straks nog eens.'; });
+    $$('[data-teller-note]').forEach(el => { el.textContent = 'The counter can’t be reached right now. Please try again later.'; });
   }
 }
 
@@ -304,7 +304,7 @@ function initDelen() {
   if (!knop) return;
   knop.addEventListener('click', async () => {
     const url = new URL('./', location.href).href;
-    const data = { title: 'Zonde.', text: 'Doe je mee? Gratis apps om te gebruiken wat je al hebt.', url };
+    const data = { title: 'Zonde.', text: 'Are you in? Free apps to use what you already have.', url };
     if (navigator.share) { try { await navigator.share(data); } catch {} }
     else kopieer(url);
   });
@@ -332,11 +332,11 @@ function initIdee() {
     if (d.get('_honey')) return;
     const bericht = String(d.get('bericht') || '').trim();
     const email = String(d.get('email') || '').trim();
-    if (bericht.length < 5) { fout.textContent = 'Schrijf eerst even wat je kwijt wilt.'; form.bericht.focus(); return; }
-    if (email && !form.email.checkValidity()) { fout.textContent = 'Dat mailadres klopt niet helemaal. Je mag het ook leeg laten.'; form.email.focus(); return; }
+    if (bericht.length < 5) { fout.textContent = 'Write your message first.'; form.bericht.focus(); return; }
+    if (email && !form.email.checkValidity()) { fout.textContent = 'That email address doesn’t look right. You can also leave it empty.'; form.email.focus(); return; }
     fout.textContent = '';
     knop.disabled = true;
-    knop.textContent = 'Versturen…';
+    knop.textContent = 'Sending…';
     const gegevens = {
       soort: d.get('soort'),
       app: d.get('app'),
@@ -350,16 +350,16 @@ function initIdee() {
       const body = new FormData();
       Object.entries(gegevens).forEach(([k, v]) => body.append(k, v));
       const r = await fetch(FEEDBACK_URL, { method: 'POST', body });
-      if (r.status === 429) { fout.textContent = 'Je hebt vandaag al een paar berichten gestuurd. Probeer het morgen nog eens.'; return; }
+      if (r.status === 429) { fout.textContent = 'You’ve already sent a few messages today. Please try again tomorrow.'; return; }
       if (!r.ok) throw new Error(r.status);
       form.reset();
       form.hidden = true;
       $('#idee-bedankt').hidden = false;
     } catch {
-      fout.textContent = 'Versturen lukte niet. Probeer het straks nog eens.';
+      fout.textContent = 'Sending didn’t work. Please try again later.';
     } finally {
       knop.disabled = false;
-      knop.textContent = 'Verstuur';
+      knop.textContent = 'Send';
     }
   });
   $('#idee-nog').addEventListener('click', () => {

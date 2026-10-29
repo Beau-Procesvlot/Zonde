@@ -110,7 +110,8 @@ h1 {
   text-wrap: balance;
 }
 .lead { margin: 14px 0 0; max-width: 470px; font-size: 1.02rem; color: rgba(255, 255, 255, .82); }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.hero-actions .btn { padding: 0 20px; }
 .hero-sticker { position: absolute; right: 4px; top: -30px; transform: rotate(8deg); font-size: .85rem; padding: 7px 13px; }
 
 .slider { min-width: 0; }
@@ -485,3 +486,4 @@ dialog.sheet::backdrop { background: rgba(12, 11, 9, .55); }
 
 .ruim { margin-top: 22px; }
 .geen-boven { padding-top: 0; }
+.taal-noot { margin: 14px 0 0; padding: 10px 14px; border-radius: 12px; background: #fdf0cc; font-size: .9rem; display: inline-block; }
