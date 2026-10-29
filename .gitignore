@@ -1,0 +1,5 @@
+# Niet online zetten: testserver, instellingen van Claude, ontwerpbestanden
+serve.ps1
+.claude/
+ontwerp/
+~$*

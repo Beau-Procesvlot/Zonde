@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://datechecker-teller.beau-f5b.workers.dev; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Zonde. Gebruik wat je hebt.</title>
+  <meta name="description" content="Gratis apps die je helpen te gebruiken wat je al hebt. Doe jouw deel tegen onnodig verbruik.">
+  <meta name="theme-color" content="#161513">
+  <meta property="og:title" content="Zonde. Gebruik wat je hebt.">
+  <meta property="og:description" content="Gratis apps tegen onnodig verbruik: je kleding, je eten, en er komt meer.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/zonde.css">
+</head>
+<body>
+
+  <!-- ===== Bovenaan: de boodschap + slideshow met alle apps ===== -->
+  <header class="hero" id="apps">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="bg bg-fitchecker on"></div>
+      <div class="bg bg-datechecker"></div>
+      <div class="bg bg-binnenkort"></div>
+      <div class="rand"></div>
+    </div>
+
+    <nav class="nav">
+      <a class="logo" href="./">Zonde.</a>
+      <div class="nav-links">
+        <a href="#apps">Apps</a>
+        <a href="#doe-mee">Doe mee</a>
+        <a href="#idee">Idee?</a>
+        <a href="over.html">Over Zonde</a>
+      </div>
+    </nav>
+
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="kicker"><span class="dash"></span>Gebruik wat je hebt</p>
+        <h1>Doe jouw deel tegen onnodig verbruik.</h1>
+        <p class="lead">Gratis apps die je helpen te gebruiken wat je al hebt. Eerst je kleding en je eten, en er komt meer.</p>
+        <div class="hero-actions">
+          <a class="btn btn-mustard" href="#doe-mee">Doe mee</a>
+          <a class="btn btn-line" href="#slides" data-scroll-slides>Bekijk de apps</a>
+        </div>
+        <span class="sticker sticker-tomato hero-sticker" aria-hidden="true">Zonde!</span>
+      </div>
+
+      <div class="slider" id="slides">
+        <div class="namen" aria-hidden="true">
+          <span data-naam="fitchecker">Fitchecker</span>
+          <span data-naam="datechecker">Datechecker</span>
+          <span data-naam="binnenkort">Binnenkort</span>
+        </div>
+        <p class="now" aria-live="polite"><b>01</b> <span id="now-text">Kleding · Draag wat je hebt</span></p>
+        <div class="cards" role="list">
+          <a class="card on" role="listitem" data-app="fitchecker" href="fitchecker.html">
+            <span class="card-visual bg-fitchecker"><img src="img/fitchecker.png" alt="" width="512" height="512"></span>
+            <span class="card-text">
+              <small>Kleding · Draag wat je hebt</small>
+              <strong>Fitchecker</strong>
+            </span>
+          </a>
+          <a class="card" role="listitem" data-app="datechecker" href="datechecker.html">
+            <span class="card-visual bg-datechecker">
+              <img src="img/datechecker.png" alt="" width="512" height="512">
+              <span class="sticker sticker-sage card-badge" data-teller-badge><span data-teller>…</span> kg gered</span>
+            </span>
+            <span class="card-text">
+              <small>Eten · Eet wat je hebt</small>
+              <strong>Datechecker</strong>
+            </span>
+          </a>
+          <button class="card card-soon" role="listitem" data-app="binnenkort">
+            <span class="card-visual bg-binnenkort"><span class="soon-mark">?</span></span>
+            <span class="card-text">
+              <small>Er komt meer</small>
+              <strong>Binnenkort</strong>
+            </span>
+          </button>
+        </div>
+        <div class="slider-controls">
+          <button class="round" data-dir="-1" aria-label="Vorige app"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="round" data-dir="1" aria-label="Volgende app"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+          <span class="progress"><span id="progress-bar"></span></span>
+          <span class="count" id="count">01</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Join the movement ===== -->
+    <section class="paper section" id="doe-mee">
+      <div class="wrap">
+        <span class="sticker sticker-mustard">Join the movement</span>
+        <h2>Je bent niet de enige.</h2>
+        <p class="section-lead">Zonde. is een beweging van mensen die gebruiken wat ze al hebben. Geen perfect zero-waste-leven, gewoon elke dag een beetje minder weggooien. Iedereen die meedoet telt mee.</p>
+
+        <div class="counter">
+          <span class="sticker sticker-sage counter-sticker">Gered!</span>
+          <p class="counter-num"><span data-teller>…</span><small> kg</small></p>
+          <p class="counter-label">eten hebben we samen al gered met Datechecker</p>
+          <p class="counter-note" data-teller-note>Telt live mee, helemaal anoniem.</p>
+        </div>
+
+        <h3 class="mini-title">Waarom het ertoe doet</h3>
+        <div class="facts">
+          <article class="fact">
+            <span class="sticker sticker-tomato">Kleding</span>
+            <p class="fact-num">1 op 6</p>
+            <p>kledingstukken in de kast wordt nooit gedragen, ook als het past bij het seizoen.</p>
+            <a class="bron" href="https://afvalcirculair.nl/publish/pages/247035/rapportage-nationale-kledingkast-audit-2025.pdf" target="_blank" rel="noopener">Nationale Kledingkast Audit 2025</a>
+          </article>
+          <article class="fact">
+            <span class="sticker sticker-tomato">Kleding</span>
+            <p class="fact-num">60</p>
+            <p>nieuwe kledingstukken koopt een Nederlander gemiddeld per jaar.</p>
+            <a class="bron" href="https://www.milieucentraal.nl/spullen-en-kleding/kleding/koop-slimmer-kleren/" target="_blank" rel="noopener">Milieu Centraal</a>
+          </article>
+          <article class="fact">
+            <span class="sticker sticker-mustard">Eten</span>
+            <p class="fact-num">25,5 kg</p>
+            <p>eten gooit elke Nederlander thuis per jaar weg.</p>
+            <a class="bron" href="https://www.voedingscentrum.nl/encyclopedie/voedselverspilling.aspx" target="_blank" rel="noopener">Voedingscentrum, 2025</a>
+          </article>
+          <article class="fact">
+            <span class="sticker sticker-mustard">Eten</span>
+            <p class="fact-num">€ 100</p>
+            <p>is dat weggegooide eten waard, per persoon per jaar.</p>
+            <a class="bron" href="https://www.voedingscentrum.nl/nl/nieuws/-voedselverspilling-bij-nederlanders-thuis-verder-gedaald-maar-we-kunnen-nog-veel-winst-behalen-.aspx" target="_blank" rel="noopener">Voedingscentrum, 2025</a>
+          </article>
+        </div>
+
+        <h3 class="mini-title">Zo doe je mee</h3>
+        <ol class="steps">
+          <li><b>Kies een app</b><span>Begin waar het voor jou het meest zonde is: je kast of je koelkast.</span></li>
+          <li><b>Zet hem op je beginscherm</b><span>Geen App Store nodig. In een minuut geregeld, wij leggen het uit.</span></li>
+          <li><b>Gebruik wat je hebt</b><span>Elke look uit je eigen kast en elk gered product telt mee.</span></li>
+        </ol>
+        <a class="btn btn-ink" href="#slides" data-scroll-slides>Kies je app</a>
+      </div>
+    </section>
+
+    <!-- ===== Manifest ===== -->
+    <section class="manifest section">
+      <div class="wrap">
+        <span class="sticker sticker-tomato">Het Zonde-manifest</span>
+        <ul>
+          <li>Weggooien wat nog goed is, is zonde.</li>
+          <li>Wat je al hebt, is genoeg om mee te beginnen.</li>
+          <li>Niemand hoeft perfect te zijn. Elke keer telt.</li>
+          <li>Samen maakt het verschil.</li>
+        </ul>
+        <div class="share">
+          <p>Hoe meer mensen meedoen, hoe groter het verschil.</p>
+          <button class="btn btn-mustard" id="share">Neem iemand mee</button>
+        </div>
+      </div>
+    </section>
+    <!-- ===== Feedback en ideeën ===== -->
+    <section class="paper section" id="idee">
+      <div class="wrap">
+        <span class="sticker sticker-tomato">Praat mee</span>
+        <h2>Heb je een idee of feedback?</h2>
+        <p class="section-lead">Zonde. groeit met jouw ideeën. Wat kan er beter, wat werkt er niet, of welke app moet er nog komen? Laat het weten, we lezen alles.</p>
+
+        <form class="idee-form" id="idee-form" novalidate>
+          <fieldset class="keuze">
+            <legend>Waar gaat het over?</legend>
+            <label><input type="radio" name="soort" value="Idee" checked><span>Een idee</span></label>
+            <label><input type="radio" name="soort" value="Feedback"><span>Feedback</span></label>
+            <label><input type="radio" name="soort" value="Iets werkt niet"><span>Iets werkt niet</span></label>
+          </fieldset>
+          <fieldset class="keuze">
+            <legend>Over welke app?</legend>
+            <label><input type="radio" name="app" value="Zonde. algemeen" checked><span>Algemeen</span></label>
+            <label><input type="radio" name="app" value="Fitchecker"><span>Fitchecker</span></label>
+            <label><input type="radio" name="app" value="Datechecker"><span>Datechecker</span></label>
+            <label><input type="radio" name="app" value="Nieuwe app"><span>Nieuwe app</span></label>
+          </fieldset>
+          <label class="veld">
+            <span>Je bericht</span>
+            <textarea name="bericht" rows="5" maxlength="2000" required placeholder="Vertel het maar…"></textarea>
+          </label>
+          <div class="veld-rij">
+            <label class="veld">
+              <span>Naam <small>(mag leeg)</small></span>
+              <input type="text" name="naam" maxlength="80" autocomplete="name">
+            </label>
+            <label class="veld">
+              <span>E-mail <small>(alleen als je antwoord wilt)</small></span>
+              <input type="email" name="email" maxlength="120" autocomplete="email" inputmode="email">
+            </label>
+          </div>
+          <input class="honing" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="form-fout" id="form-fout" role="alert"></p>
+          <button class="btn btn-ink" type="submit" id="idee-knop">Verstuur</button>
+          <p class="form-klein">Je bericht gaat via Make (een automatiseringsdienst) naar de mail van Zonde. We gebruiken het alleen om het te lezen en, als je een mailadres invult, om je te antwoorden.</p>
+        </form>
+
+        <div class="idee-bedankt" id="idee-bedankt" hidden>
+          <span class="sticker sticker-sage">Ontvangen!</span>
+          <h3>Dankjewel, echt.</h3>
+          <p>Zo maken we Zonde. samen beter. <button class="link-knop" id="idee-nog">Nog iets kwijt?</button></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="logo">Zonde.</p>
+      <p>Gratis. Geen account. Geen tracking. Je gegevens blijven op je eigen telefoon.</p>
+      <p class="footer-links"><a href="over.html">Over Zonde</a> <a href="https://beau-procesvlot.github.io/Fitchecker/">Fitchecker</a> <a href="https://beau-procesvlot.github.io/Datechecker/">Datechecker</a></p>
+    </div>
+  </footer>
+
+  <!-- ===== Onderblad: app + hoe wil je hem downloaden ===== -->
+  <dialog class="sheet" id="app-sheet" aria-labelledby="sheet-title">
+    <div class="sheet-body" id="sheet-body"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/zonde.js"></script>
+</body>
+</html>
